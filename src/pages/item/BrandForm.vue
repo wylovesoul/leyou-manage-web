@@ -10,7 +10,7 @@
     <v-select
       :items="tagnamelist"
       v-model="movie.tagId"
-      label="影院名称"
+      label="标签"
       item-text="name"
       item-value="id"
     ></v-select>

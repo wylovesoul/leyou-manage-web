@@ -107,6 +107,7 @@
         skus: [],
         headers: [],// 表头
         goods: {
+          id : 0,
           movieId: null,// 选中的商品分类id数组
           tagname: null,
           time: '',
@@ -124,6 +125,16 @@
         this.$http.get("/ShowController/getOneTagSelect" ).then(resp => {
           this.tagnamelist = resp.data;
         })
+      console.log(this.oldGoods)
+      if(this.isEdit){
+        this.goods.id = this.oldGoods.id;
+        this.goods.movieId = this.oldGoods.movieId;
+        this.goods.tagname = this.oldGoods.tagname;
+        this.goods.time = this.oldGoods.time;
+        this.goods.price = this.oldGoods.price;
+
+      }
+      console.log(this.movie)
     }
     ,
     methods: {

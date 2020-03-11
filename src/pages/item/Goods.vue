@@ -38,7 +38,7 @@
     >
       <template slot="items" slot-scope="props">
         <td class="text-xs-center">{{ props.item.id }}</td>
-        <td class="text-xs-center">{{ props.item.theaterName }}</td>
+        <td class="text-xs-center">{{ props.item.name }}</td>
         <td class="text-xs-center">{{ props.item.time }}</td>
         <td class="text-xs-center">{{ props.item.price}}</td>
         <td class="text-xs-center">{{ props.item.shouchu }}</td>
@@ -110,7 +110,7 @@
         pagination: {},// 分页信息
         headers: [// 表头
           {text: 'id', align: 'center', value: 'id'},
-          {text: '电影名称', align: 'center', sortable: false, value: 'theaterName'},
+          {text: '电影名称', align: 'center', sortable: false, value: 'name'},
           {text: '开始时间', align: 'center', sortable: false, value: 'time'},
           {text: '价格', align: 'center', value: 'price', sortable: true,},
           {text: '售出', align: 'center', value: 'shouchu', sortable: false},
@@ -168,19 +168,20 @@
       },
       editItem(item) {
         this.selectedGoods = item;
-        const names = item.categoryName.split("/");
-        this.selectedGoods.categories = [
-          {id: item.cid1, name: names[0]},
-          {id: item.cid2, name: names[1]},
-          {id: item.cid3, name: names[2]}
-        ];
-        // 查询商品详情
-        this.$http.get("/item/goods/spu/detail/" + item.id)
-          .then(resp => {
-            this.selectedGoods.spuDetail = resp.data;
-            this.selectedGoods.spuDetail.specTemplate = JSON.parse(resp.data.specTemplate);
-            this.selectedGoods.spuDetail.specifications = JSON.parse(resp.data.specifications);
-          })
+        // this.selectedGoods = item;
+        // const names = item.categoryName.split("/");
+        // this.selectedGoods.categories = [
+        //   {id: item.cid1, name: names[0]},
+        //   {id: item.cid2, name: names[1]},
+        //   {id: item.cid3, name: names[2]}
+        // ];
+        // // 查询商品详情
+        // this.$http.get("/item/goods/spu/detail/" + item.id)
+        //   .then(resp => {
+        //     this.selectedGoods.spuDetail = resp.data;
+        //     this.selectedGoods.spuDetail.specTemplate = JSON.parse(resp.data.specTemplate);
+        //     this.selectedGoods.spuDetail.specifications = JSON.parse(resp.data.specifications);
+        //   })
         this.isEdit = true;
         this.show = true;
       },
